@@ -8,11 +8,6 @@ namespace DatingApp.API.Data
 {
     public class Seed
     {
-        private readonly DataContext _context;
-        public Seed(DataContext context)
-        {
-            _context = context;
-        }
 
         public static void SeedUsers(UserManager<User> userManager)
         {
@@ -26,13 +21,14 @@ namespace DatingApp.API.Data
                 }
             }
 
-            private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
-            {
-                using (var hmac = new System.Security.Cryptography.HMACSHA512())
-                {
-                    passwordSalt = hmac.Key;
-                    passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
-                }
-            }
+            // private static void CreatePasswordHash(string password, out byte[] passwordHash, out byte[] passwordSalt)
+            // {
+            //     using (var hmac = new System.Security.Cryptography.HMACSHA512())
+            //     {
+            //         passwordSalt = hmac.Key;
+            //         passwordHash = hmac.ComputeHash(System.Text.Encoding.UTF8.GetBytes(password));
+            //     }
+            // }
         }
     }
+}
