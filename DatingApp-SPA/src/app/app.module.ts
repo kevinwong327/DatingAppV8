@@ -12,7 +12,8 @@ import {
   TabsModule,
   BsDatepickerModule,
   ButtonsModule,
-  PaginationModule
+  PaginationModule,
+  ModalModule
 } from 'ngx-bootstrap';
 import { RouterModule } from '@angular/router';
 import { JwtModule } from '@auth0/angular-jwt';
@@ -49,6 +50,7 @@ import { AuthService } from './_services/auth.service';
 import { AlertifyService } from './_services/alertify.service';
 import { AuthGuard } from './_guards/auth.guard';
 import { UserService } from './_services/user.service';
+import { RolesModalComponent } from './admin/roles-modal/roles-modal.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -79,7 +81,8 @@ export class CustomHammerConfig extends HammerGestureConfig {
     AdminPanelComponent,
     HasRoleDirective,
     UserManagementComponent,
-    PhotoManagementComponent
+    PhotoManagementComponent,
+    RolesModalComponent
   ],
   imports: [
     BrowserModule,
@@ -93,6 +96,7 @@ export class CustomHammerConfig extends HammerGestureConfig {
     PaginationModule.forRoot(),
     TabsModule.forRoot(),
     RouterModule.forRoot(appRoutes),
+    ModalModule.forRoot(),
     NgxGalleryModule,
     FileUploadModule,
     JwtModule.forRoot({
@@ -117,6 +121,9 @@ export class CustomHammerConfig extends HammerGestureConfig {
     MessagesResolver,
     AdminService,
     { provide: HAMMER_GESTURE_CONFIG, useClass: CustomHammerConfig }
+  ],
+  entryComponents: [
+    RolesModalComponent
   ],
   bootstrap: [AppComponent]
 })
